@@ -8,7 +8,8 @@ package com.modhajai.dimensions
 class Claim {
 
     Long id
-    String claimDocument
+    String eventData
+    String eventType
     Long patientId
 
 }

@@ -29,7 +29,7 @@ class KafkaproducerApplicationTests {
 			Claim claim = new Claim()
 			claim.with {
 				id = i as Long
-				claimDocument = """
+				eventData = """
 					ST*824*021390002*005010X186A1~
 					BGN*11*FFA.ABCDEF.123456*20020709*0932**123456789**U~
 					N1*41*DEF INSURANCE*46*222222222~
@@ -40,6 +40,7 @@ class KafkaproducerApplicationTests {
 					RED*NA**94**IBP*E054~
 					SE*9*021390002~
 				""".stripIndent()
+				eventType = 'Claim'
 				patientId = i as Long
 
 			}
