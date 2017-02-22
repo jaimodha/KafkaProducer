@@ -25,10 +25,10 @@ class KafkaproducerApplicationTests {
 	@Test
 	public void testReceiver() throws Exception {
 
-		1.upto(6) {
+		for(int i = 0; i < 6 ; i++  ) {
 			Claim claim = new Claim()
 			claim.with {
-				id = it as Long
+				id = i as Long
 				claimDocument = """
 					ST*824*021390002*005010X186A1~
 					BGN*11*FFA.ABCDEF.123456*20020709*0932**123456789**U~
@@ -40,7 +40,7 @@ class KafkaproducerApplicationTests {
 					RED*NA**94**IBP*E054~
 					SE*9*021390002~
 				""".stripIndent()
-				patientId = it as Long
+				patientId = i as Long
 
 			}
 			sender.sendMessage("test", new JsonBuilder(claim).toPrettyString());

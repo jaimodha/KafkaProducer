@@ -1,6 +1,8 @@
 package com.modhajai.configs
 
 import org.apache.kafka.clients.producer.ProducerConfig
+import org.apache.kafka.common.serialization.IntegerSerializer
+import org.apache.kafka.common.serialization.StringSerializer
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -16,9 +18,9 @@ import org.springframework.kafka.core.ProducerFactory
  */
 @EnableKafka
 @Configuration
-class ProducerConfigs {
+class SenderConfigs {
 
-    @Value('{$kafka.bootstrap.server}')
+    @Value('${kafka.bootstrap.server}')
     String bootstrapServer
 
     @Bean
@@ -27,7 +29,6 @@ class ProducerConfigs {
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer)
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, IntegerSerializer.class)
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class)
-        properties.put(ProducerConfig.MAX_BLOCK_MS_CONFIG, 5000)
         properties
     }
 
